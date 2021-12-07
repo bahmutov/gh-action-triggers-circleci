@@ -10,6 +10,9 @@ parameters:
 
 jobs:
   info:
+    # inject the environment variables from these security contexts
+    context:
+      - demo-gh-action-triggers-circleci
     machine:
       image: ubuntu-2004:202104-01
     steps:
@@ -18,6 +21,7 @@ jobs:
           command: |
             echo "TRIGGER is << pipeline.parameters.TRIGGER >>"
             echo "SOME_OTHER_PARAM is << pipeline.parameters.SOME_OTHER_PARAM >>"
+            echo "Variable MY_SECRET from the security context \"${MY_SECRET}\""
 
 workflows:
   # this workflow only runs when triggered by the GH Action workflow "cron.yml"
