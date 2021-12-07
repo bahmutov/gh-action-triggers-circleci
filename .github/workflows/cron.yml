@@ -12,8 +12,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Trigger CircleCI pipelines ⭕️
+        # use this NPM module to easily call CircleCI API and trigger pipelines
+        # https://github.com/bahmutov/trigger-circleci-pipeline
         run: |
           npx trigger-circleci-pipeline \
             --org bahmutov --project gh-action-triggers-circleci \
             --branch main \
             --parameters TRIGGER=gh-action-cron,SOME_OTHER_PARAM=some-value
+        env:
+          CIRCLE_CI_API_TOKEN: ${{ secrets.CIRCLE_CI_API_TOKEN }}
