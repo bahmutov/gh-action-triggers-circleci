@@ -10,9 +10,6 @@ parameters:
 
 jobs:
   info:
-    # inject the environment variables from these security contexts
-    context:
-      - demo-gh-action-triggers-circleci
     machine:
       image: ubuntu-2004:202104-01
     steps:
@@ -30,4 +27,7 @@ workflows:
       and:
         - equal: [<< pipeline.parameters.TRIGGER >>, 'gh-action-cron']
     jobs:
-      - info
+      - info:
+          # inject the environment variables from these security contexts
+          context:
+            - demo-gh-action-triggers-circleci
