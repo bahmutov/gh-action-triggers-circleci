@@ -1,0 +1,19 @@
+name: cron
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # run the job every hour
+    - cron: '0 1 * * *'
+
+jobs:
+  trigger-circleci:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Trigger CircleCI pipelines ⭕️
+        run: |
+          npx trigger-circleci-pipeline \
+            --org bahmutov --project gh-action-triggers-circleci \
+            --branch main \
+            --parameters TRIGGER=gh-action-cron,SOME_OTHER_PARAM=some-value

@@ -1,0 +1,29 @@
+version: 2.1
+
+parameters:
+  TRIGGER:
+    type: string
+    default: ''
+  SOME_OTHER_PARAM:
+    type: string
+    default: ''
+
+jobs:
+  info:
+    machine:
+      image: ubuntu-2004:202104-01
+    steps:
+      - run:
+          name: print variables
+          command: |
+            echo "TRIGGER is << pipeline.parameters.TRIGGER >>"
+            echo "SOME_OTHER_PARAM is << pipeline.parameters.SOME_OTHER_PARAM >>"
+
+workflows:
+  # this workflow only runs when triggered by the GH Action workflow "cron.yml"
+  cron-triggered:
+    when:
+      and:
+        - equal: [<< pipeline.parameters.TRIGGER >>, 'gh-action-cron']
+    jobs:
+      - info
