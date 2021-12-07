@@ -1,4 +1,4 @@
-# gh-action-triggers-circleci [![cron](https://github.com/bahmutov/gh-action-triggers-circleci/actions/workflows/cron.yml/badge.svg?branch=main)](https://github.com/bahmutov/gh-action-triggers-circleci/actions/workflows/cron.yml)
+# gh-action-triggers-circleci [![cron](https://github.com/bahmutov/gh-action-triggers-circleci/actions/workflows/cron.yml/badge.svg?branch=main)](https://github.com/bahmutov/gh-action-triggers-circleci/actions/workflows/cron.yml) [![CircleCI](https://circleci.com/gh/bahmutov/gh-action-triggers-circleci/tree/main.svg?style=svg)](https://circleci.com/gh/bahmutov/gh-action-triggers-circleci/tree/main)
 > Example GH Action that periodically triggers the CircleCI Pipeline that uses context variables
 
 By default the scheduled CircleCI workflows cannot use security contexts, [bug](https://circleci.canny.io/cloud-feature-requests/p/allow-restricted-contexts-within-scheduled-workflows). Which is very frustrating. As a workaround, this repo uses GH Actions to trigger the pipelines periodically.
